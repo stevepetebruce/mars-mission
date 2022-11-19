@@ -7,10 +7,10 @@ import { addUser } from "../actions/userActions";
 import { SPACEMEN } from "./constants";
 
 function UserInput() {
-	const userDispatch = useDispatch();
+	const dispatch = useDispatch();
 
 	const handleUserChange = (e) => {
-		userDispatch(addUser(e.target.value));
+		dispatch(addUser(e.target.value));
 	};
 
 	return (

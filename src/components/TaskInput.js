@@ -6,14 +6,15 @@ import { v4 as uuidv4 } from "uuid";
 // components
 import UserInput from "./UserInput";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTask } from "../actions/taskActions";
 
 // Spacemen on the mars mission
 import { SPACEMEN } from "./constants";
 
 function TaskInput() {
-	const taskDispatch = useDispatch();
+	const dispatch = useDispatch();
+	const { currentUser } = useSelector((state) => state.user);
 
 	const title = useRef(null);
 	const description = useRef(null);
@@ -31,8 +32,9 @@ function TaskInput() {
 			title: title.current.value,
 			description: description.current.value,
 			assignedTo: assignedTo,
+			user: currentUser || "No user assigned",
 		};
-		taskDispatch(addTask(task));
+		dispatch(addTask(task));
 		title.current.value = "";
 		description.current.value = "";
 		setAssignedTo(SPACEMEN[0]);
