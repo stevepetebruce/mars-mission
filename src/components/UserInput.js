@@ -1,0 +1,30 @@
+import React from "react";
+
+import { useDispatch } from "react-redux";
+import { addUser } from "../actions/userActions";
+
+// Spacemen on the mars mission
+import { SPACEMEN } from "./constants";
+
+function UserInput() {
+	const userDispatch = useDispatch();
+
+	const handleUserChange = (e) => {
+		userDispatch(addUser(e.target.value));
+	};
+
+	return (
+		<div>
+			<label htmlFor='user'>User</label>
+			<select name='user' id='user' onChange={handleUserChange}>
+				{SPACEMEN.map((spaceman, i) => (
+					<option key={i} value={spaceman}>
+						{spaceman}
+					</option>
+				))}
+			</select>
+		</div>
+	);
+}
+
+export default UserInput;
