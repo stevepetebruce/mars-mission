@@ -2,6 +2,7 @@ import React from "react";
 
 import { useSelector } from "react-redux";
 
+import TaskEdit from "./TaskEdit";
 import TaskRemove from "./TaskRemove";
 
 function Tasks() {
@@ -14,11 +15,18 @@ function Tasks() {
 			) : (
 				tasks.map((task) => (
 					<div key={task.id}>
-						<p>{task.user}</p>
-						<h3>{task.title}</h3>
-						<p>{task.description}</p>
-						<p>{task.assignedTo}</p>
+						<p>{task.user ? task.user : "User not selected"}</p>
+						<h3>{task.title ? task.title : "Title not entered"}</h3>
+						<p>
+							{task.description ? task.description : "Description not entered"}
+						</p>
+						<p>
+							{task.assignedTo
+								? task.assignedTo
+								: "Task not assigned to anyone"}
+						</p>
 						<TaskRemove taskId={task.id} />
+						<TaskEdit task={task} />
 					</div>
 				))
 			)}

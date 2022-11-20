@@ -17,6 +17,9 @@ function UserInput() {
 		<div>
 			<label htmlFor='user'>User</label>
 			<select name='user' id='user' onChange={handleUserChange}>
+				<option value='' disabled hidden>
+					Please select a user
+				</option>
 				{SPACEMEN.map((spaceman, i) => (
 					<option key={i} value={spaceman}>
 						{spaceman}
