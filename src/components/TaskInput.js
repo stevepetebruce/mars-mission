@@ -41,23 +41,25 @@ function TaskInput() {
 	};
 
 	return (
-		<div>
+		<div data-testid='task-input'>
 			<UserInput />
 			<h1>Add Task</h1>
-			<form onSubmit={handleTaskSubmit}>
+			<form data-testid='task-form' onSubmit={handleTaskSubmit}>
 				<label htmlFor='title'>Title</label>
-				<input type='text' name='title' ref={title} />
+				<input type='text' name='title' ref={title} data-testid='title-input' />
 				<label htmlFor='description'>Description</label>
 				<textarea
 					name='description'
 					id='description'
 					cols='30'
 					rows='4'
-					ref={description}></textarea>
+					ref={description}
+					data-testid='description-input'></textarea>
 				<label htmlFor='assignedTo'>Assigned To</label>
 				<select
 					name='assignedTo'
 					id='assignedTo'
+					data-testid='assigned-to-input'
 					onChange={handleAssignedToChange}>
 					{SPACEMEN.map((spaceman, i) => (
 						<option key={i} value={spaceman}>
@@ -66,7 +68,9 @@ function TaskInput() {
 					))}
 				</select>
 
-				<button type='submit'>Add Task</button>
+				<button type='submit' data-testid='submit-button'>
+					Add Task
+				</button>
 			</form>
 		</div>
 	);
