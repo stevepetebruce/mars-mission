@@ -11,8 +11,12 @@ function TaskRemove(taskId) {
 		dispatch(deleteTask(id));
 	};
 	return (
-		<div>
-			<button onClick={() => handleRemoveTask(taskId)}>X</button>
+		<div data-testid='task-remove'>
+			<button
+				onClick={() => handleRemoveTask(taskId)}
+				data-testid='button-remove'>
+				X
+			</button>
 		</div>
 	);
 }
