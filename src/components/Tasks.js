@@ -9,12 +9,12 @@ function Tasks() {
 	const { tasks } = useSelector((state) => state.tasks);
 
 	return (
-		<div>
-			{!tasks.length ? (
-				<p>No tasks</p>
+		<div data-testid='tasks'>
+			{tasks?.length === 0 ? (
+				<p data-testid='no-tasks'>No tasks</p>
 			) : (
-				tasks.map((task) => (
-					<div key={task.id}>
+				tasks?.map((task) => (
+					<div key={task.id} data-testid='task'>
 						<p>{task.user ? task.user : "User not selected"}</p>
 						<h3>{task.title ? task.title : "Title not entered"}</h3>
 						<p>

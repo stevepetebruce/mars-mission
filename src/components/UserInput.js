@@ -16,7 +16,11 @@ function UserInput() {
 	return (
 		<div>
 			<label htmlFor='user'>User</label>
-			<select name='user' id='user' onChange={handleUserChange}>
+			<select
+				name='user'
+				id='user'
+				onChange={handleUserChange}
+				data-testid='user-input'>
 				<option value='' disabled hidden>
 					Please select a user
 				</option>
