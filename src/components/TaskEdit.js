@@ -12,7 +12,7 @@ function TaskEdit({ task }) {
 
 	const title = useRef(null);
 	const description = useRef(null);
-	const [assignedTo, setAssignedTo] = useState(task.assignedTo);
+	const [assignedTo, setAssignedTo] = useState(task?.assignedTo);
 
 	const handleAssignedToChange = (e) => {
 		setAssignedTo(e.target.value);
@@ -35,42 +35,43 @@ function TaskEdit({ task }) {
 	};
 
 	return (
-		<div>
+		<div data-testid='task-edit'>
 			<button onClick={() => setDisplay(!display)}>Edit Task</button>
 			{display && (
-				<div>
-					<form onSubmit={handleTaskEdit}>
-						<label htmlFor='title'>Title</label>
-						<input
-							type='text'
-							name='title'
-							ref={title}
-							defaultValue={task.title}
-						/>
-						<label htmlFor='description'>Description</label>
-						<textarea
-							defaultValue={task.description}
-							name='description'
-							id='description'
-							cols='30'
-							rows='4'
-							ref={description}></textarea>
-						<label htmlFor='assignedTo'>Assigned To</label>
-						<select
-							defaultValue={task.assignedTo}
-							name='assignedTo'
-							id='assignedTo'
-							onChange={handleAssignedToChange}>
-							{SPACEMEN.map((spaceman, i) => (
-								<option key={i} value={spaceman}>
-									{spaceman}
-								</option>
-							))}
-						</select>
+				<form onSubmit={handleTaskEdit}>
+					<label htmlFor='title'>Title</label>
+					<input
+						type='text'
+						name='title'
+						ref={title}
+						defaultValue={task.title}
+						data-testid='title-input-edit'
+					/>
+					<label htmlFor='description'>Description</label>
+					<textarea
+						defaultValue={task.description}
+						name='description'
+						id='description'
+						cols='30'
+						rows='4'
+						ref={description}
+						data-testid='description-input-edit'></textarea>
+					<label htmlFor='assignedTo'>Assigned To</label>
+					<select
+						defaultValue={task.assignedTo}
+						data-testid='assignedTo-input-edit'
+						name='assignedTo'
+						id='assignedTo'
+						onChange={handleAssignedToChange}>
+						{SPACEMEN.map((spaceman, i) => (
+							<option key={i} value={spaceman}>
+								{spaceman}
+							</option>
+						))}
+					</select>
 
-						<button type='submit'>Add Task</button>
-					</form>
-				</div>
+					<button type='submit'>Edit Task</button>
+				</form>
 			)}
 		</div>
 	);
