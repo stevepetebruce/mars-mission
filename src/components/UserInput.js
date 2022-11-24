@@ -14,13 +14,13 @@ function UserInput() {
 	};
 
 	return (
-		<div>
+		<div data-testid='user-input'>
 			<label htmlFor='user'>User</label>
 			<select
 				name='user'
 				id='user'
 				onChange={handleUserChange}
-				data-testid='user-input'>
+				data-testid='user-input-field'>
 				<option value='' disabled hidden>
 					Please select a user
 				</option>

@@ -14,7 +14,7 @@ function useFetchImage({ url }) {
 			.catch((error) => {
 				console.error(error);
 			});
-	}, []);
+	}, [url]);
 
 	return { image, loading };
 }
