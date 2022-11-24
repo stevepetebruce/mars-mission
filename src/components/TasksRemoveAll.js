@@ -12,11 +12,13 @@ function TasksRemoveAll() {
 	};
 
 	return (
-		<>
-			{tasks.length > 0 && (
-				<button onClick={handleRemoveAll}>Remove All</button>
+		<div data-testid='tasks-remove-all'>
+			{tasks?.length > 0 && (
+				<button data-testid='tasks-remove-all-button' onClick={handleRemoveAll}>
+					Remove All
+				</button>
 			)}
-		</>
+		</div>
 	);
 }
 
