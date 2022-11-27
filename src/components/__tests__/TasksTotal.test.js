@@ -1,5 +1,5 @@
 import React from "react";
-import Tasks from "../Tasks";
+import Tasks from "../TasksTotal";
 import { render, screen, cleanup } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
@@ -18,11 +18,11 @@ describe("Tasks", () => {
 			</Provider>
 		);
 
-		const tasks = screen.getByTestId("tasks");
+		const tasks = screen.getByTestId("total-tasks");
 		expect(tasks).toBeInTheDocument();
 	});
 
-	test("should not render tasks if no tasks are present", () => {
+	test("should display 0 if no tasks", () => {
 		render(
 			<Provider store={store}>
 				<Tasks />
@@ -32,12 +32,9 @@ describe("Tasks", () => {
 		const newState = tasksReducer(undefined, {});
 		expect(newState.tasks.length).toBe(0);
 
-		expect(screen.queryByTestId("tasks")).toContainHTML(
-			"There are currently no tasks"
-		);
+		expect(screen.queryByTestId("total-tasks")).toContainHTML("0");
 	});
-
-	test("should store tasks in store", () => {
+	test("should display a number if tasks are stored in state", () => {
 		render(
 			<Provider store={store}>
 				<Tasks />
