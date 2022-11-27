@@ -70,7 +70,7 @@ describe("TaskInput", () => {
 		fireEvent.change(assignedToInput, { target: { value: "" } });
 		fireEvent.click(submitButton);
 		const state = store.getState();
-		console.log(state.tasks);
+
 		expect(state.tasks.tasks[0].title).toBe("Test Title");
 		expect(state.tasks.tasks[0].description).toBe("Test Description");
 		expect(state.tasks.tasks[0].assignedTo).toBe("");

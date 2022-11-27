@@ -14,8 +14,11 @@ function TasksRemoveAll() {
 	return (
 		<div data-testid='tasks-remove-all'>
 			{tasks?.length > 0 && (
-				<button data-testid='tasks-remove-all-button' onClick={handleRemoveAll}>
-					Remove All
+				<button
+					data-testid='tasks-remove-all-button'
+					className='btn btn--danger'
+					onClick={handleRemoveAll}>
+					Remove All Tasks
 				</button>
 			)}
 		</div>

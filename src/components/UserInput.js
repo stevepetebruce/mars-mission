@@ -14,22 +14,22 @@ function UserInput() {
 	};
 
 	return (
-		<div data-testid='user-input'>
-			<label htmlFor='user'>User</label>
-			<select
-				name='user'
-				id='user'
-				onChange={handleUserChange}
-				data-testid='user-input-field'>
-				<option value='' disabled hidden>
-					Please select a user
-				</option>
-				{SPACEMEN.map((spaceman, i) => (
-					<option key={i} value={spaceman}>
-						{spaceman}
-					</option>
-				))}
-			</select>
+		<div className='field-grp' data-testid='user-input'>
+			<div className='field field-grp__field'>
+				<label htmlFor='user'>User</label>
+				<select
+					name='user'
+					id='user'
+					onChange={handleUserChange}
+					data-testid='user-input-field'>
+					<option value=''>Please select a user</option>
+					{SPACEMEN.map((spaceman, i) => (
+						<option key={i} value={spaceman}>
+							{spaceman}
+						</option>
+					))}
+				</select>
+			</div>
 		</div>
 	);
 }

@@ -10,25 +10,37 @@ function Tasks() {
 
 	return (
 		<div data-testid='tasks'>
-			{tasks?.length === 0 ? (
-				<p data-testid='no-tasks'>No tasks</p>
+			{!tasks?.length || tasks?.length === 0 ? (
+				<p data-testid='no-tasks'>There are currently no tasks</p>
 			) : (
-				tasks?.map((task) => (
-					<div key={task.id} data-testid='task'>
-						<p>{task.user ? task.user : "User not selected"}</p>
-						<h3>{task.title ? task.title : "Title not entered"}</h3>
-						<p>
-							{task.description ? task.description : "Description not entered"}
-						</p>
-						<p>
-							{task.assignedTo
-								? task.assignedTo
-								: "Task not assigned to anyone"}
-						</p>
-						<TaskRemove taskId={task.id} />
-						<TaskEdit task={task} />
-					</div>
-				))
+				<>
+					<h3>Tasks</h3>
+					{tasks?.map((task) => (
+						<div key={task.id} className='card' data-testid='task'>
+							<div className='card__header'>
+								<div className='tag'>
+									{task.user ? `User: ${task.user}` : "User not selected"}
+								</div>
+								<TaskRemove taskId={task.id} />
+							</div>
+
+							<h4>{task.title ? task.title : "Title not entered"}</h4>
+							<p>
+								{task.description
+									? task.description
+									: "Description not entered"}
+							</p>
+							<p>
+								{task.assignedTo
+									? `Assigned to: ${task.assignedTo}`
+									: "Task not assigned to anyone"}
+							</p>
+							<div className='card__actions'>
+								<TaskEdit task={task} />
+							</div>
+						</div>
+					))}
+				</>
 			)}
 		</div>
 	);

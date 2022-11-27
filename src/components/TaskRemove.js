@@ -14,6 +14,7 @@ function TaskRemove(taskId) {
 		<div data-testid='task-remove'>
 			<button
 				onClick={() => handleRemoveTask(taskId)}
+				className='btn btn--danger'
 				data-testid='button-remove'>
 				X
 			</button>
